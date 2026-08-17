@@ -31,13 +31,13 @@ if [[ -d "${HOME}/.grok" ]] || mkdir -p "${HOME}/.grok/skills" 2>/dev/null; then
   sync_to "${HOME}/.grok/skills/$SKILL_NAME"
 fi
 
-# 3) Claude / agents 全局
-if [[ -d "${HOME}/.agents/skills" ]]; then
+# 3) Claude / agents 全局（自动创建目录）
+if mkdir -p "${HOME}/.agents/skills" 2>/dev/null; then
   sync_to "${HOME}/.agents/skills/$SKILL_NAME"
 fi
 
-# 4) Claude skills（若存在）
-if [[ -d "${HOME}/.claude/skills" ]]; then
+# 4) Claude Code skills（自动创建目录）
+if mkdir -p "${HOME}/.claude/skills" 2>/dev/null; then
   sync_to "${HOME}/.claude/skills/$SKILL_NAME"
 fi
 

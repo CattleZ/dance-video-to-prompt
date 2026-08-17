@@ -2,7 +2,11 @@
   "duration_sec": 0,
   "aspect_ratio": "9:16",
   "subject": {
-    "appearance": "",
+    "appearance": "脸型/五官/年龄气质等外貌摘要（不含完整身材，身材见下方字段）",
+    "body_type": "整体体型：高矮印象+胖瘦/曲线类型，如高挑纤细、娇小匀称、丰满曲线、健美紧实",
+    "body_proportions": "比例印象：头身比、腿长占比、肩宽/胯宽关系、腰线高低",
+    "body_details": "分部位：肩颈锁骨、胸廓轮廓、腰腹、臀胯、腿型、手臂线条（可见才写，勿编造）",
+    "posture_habit": "全片常见体态：挺拔/微塌腰/含胸/S曲线/慵懒前倾等",
     "hair": "",
     "outfit": "",
     "expression_gaze": ""
@@ -19,10 +23,15 @@
     "lighting": ""
   },
   "camera": {
-    "framing": "",
-    "movement": "",
-    "angle": "",
-    "depth_of_field": ""
+    "device_feel": "手机竖屏/云台/手持微晃/类电影感等设备与稳定质感",
+    "height": "机位高度：眼平/微仰/低机位/微俯/高机位",
+    "angle": "水平角度：正面/3/4侧/正侧/微过肩等",
+    "framing": "主景别+构图：全身居中/七分身三分法等",
+    "movement": "主运镜：固定/横移/推进/拉远/跟随/环绕/升降 + 速度路径",
+    "movement_rhythm": "运镜与节奏：匀速/强拍微顿/弱拍跟移/无节奏关联",
+    "depth_of_field": "景深与合焦主体：全身清晰/背景轻虚/脸部合焦等",
+    "focus_priority": "全片镜头关注重点：主焦点+次焦点（全身比例/腿脚/腰胯/手势/面部/服装/环境）",
+    "shot_method": "拍摄方法综述2~4句：怎么拍、机位与稳定、想突出什么"
   },
   "segments": [
     {
@@ -30,8 +39,12 @@
       "end": 1.0,
       "action": "肢体：左右肢/幅度/手型/视线",
       "expression": "眉/眼/口+情绪；相对上段变化（由A转为B或保持）",
-      "body_focus": "",
-      "intensity": "中"
+      "body_focus": "本段突出的身材/体态焦点，如侧身细腰与腿长；无则写全身比例保持",
+      "shot_size": "本段景别：全身/七分/半身/中近景/特写等",
+      "camera_move": "本段运镜：固定/推/拉/跟/移等；无变化写同全片",
+      "shot_focus": "本段镜头关注重点：脸/手/腿脚/腰胯/全身/服装/环境",
+      "intensity": "中",
+      "beat_hint": "可选：对齐的拍点秒数或强/弱拍说明（融合阶段填写）"
     }
   ],
   "dialogue_or_text": {
@@ -39,7 +52,7 @@
     "on_screen_text": "无"
   },
   "audio_guess": {
-    "bgm_style": "",
+    "bgm_style": "画面代理可粗猜；最终以 rhythm_analysis / rhythm_plan 为准",
     "bpm_feel": "",
     "beat_sync": ""
   }

@@ -16,6 +16,9 @@ logs/
 output/
 *.log
 
+# Generated skill copies (created by install.sh)
+.grok/
+
 # OS / IDE
 .DS_Store
 .idea/
@@ -24,6 +27,5 @@ output/
 
 # Media caches
 **/*.wav
-# keep sample video if small; ignore accidental dumps
 samples/*.mov
 samples/*_copy*

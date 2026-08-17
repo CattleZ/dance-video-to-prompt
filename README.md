@@ -2,7 +2,10 @@
 
 把 **本地短视频**（跳舞 / 姿态 / 变装 / 旅行打卡 / 穿搭行走等，优先 ≤10s）反推成可直接用于 AI 视频生成的结构化 Prompt。
 
+仓库：https://github.com/CattleZ/dance-video-to-prompt
+
 能力包含：密帧抽帧、**关键帧清晰度检测与邻帧救援**、**音轨节奏/BPM 分析**、画面事实观察、节奏卡点融合、6 段生成提示词。  
+看图须分析 **人物身材特征**、**拍摄方法 / 运镜 / 关注重点** 与面部表情。  
 动作清单强制含：**左右肢、角度/幅度、手型、视线、面部表情（含变化）**。
 
 ## 快速开始
@@ -18,18 +21,18 @@ bash skills/dance-video-to-prompt/scripts/run_extract.sh /path/to/video.mp4
 bash skills/dance-video-to-prompt/scripts/install.sh
 ```
 
-输出目录默认在 `output/<视频名>_<时间戳>/`。
+输出目录默认在 `output/<视频名>_<时间戳>/`（该目录不入库）。
 
 ## 输出模板（固定 6 段）
 
 | 模块 | 作用 |
 |------|------|
 | 视觉风格 | 画质、构图、光影、色调 |
-| 场景叙述 | 人物、服装、环境、氛围 |
-| 摄影技术 | 机位、焦段、灯光、情绪 |
+| 场景叙述 | 人物（含身材体型特征）、服装、环境、氛围 |
+| 摄影技术 | 拍摄方法、运镜、关注重点、机位、焦段、灯光、情绪 |
 | 动作清单 | 带时间；**强制**含左右肢、角度/幅度、手型、视线 |
 | 对话/文字 | 对白与字幕 |
-| 背景声音 | BGM 风格与卡点关系 |
+| 背景声音 | BGM 风格、BPM 与卡点关系 |
 
 ---
 
@@ -76,9 +79,9 @@ bash skills/dance-video-to-prompt/scripts/install.sh
 
 Agent 会：
 
-1. 运行抽帧脚本  
-2. 自己看关键帧图片  
-3. 写出 `analysis.json` + `prompt.md`  
+1. 运行抽帧脚本
+2. 自己看关键帧图片
+3. 写出 `analysis.json` + `prompt.md`
 
 **Skill 主副本（随仓库复用）：**
 
@@ -110,9 +113,9 @@ bash scripts/analyze.sh /path/to/dance.mp4 --mode agent
 
 输出目录内会有：
 
-- `frames/` — 关键帧  
-- `frames_meta.json`  
-- `AGENT_INSTRUCTIONS.md` — 给 Agent 的完整步骤  
+- `frames/` — 关键帧
+- `frames_meta.json`
+- `AGENT_INSTRUCTIONS.md` — 给 Agent 的完整步骤
 
 然后在对话里让 Agent「按 AGENT_INSTRUCTIONS 完成分析」。
 
@@ -150,14 +153,18 @@ output/<视频名>_<时间戳>/
   run_meta.json             # 仅 api 模式
 ```
 
+`output/` 为运行产物，默认不提交到 Git。
+
 ---
 
 ## 流水线（准确率）
 
-1. **高密度抽帧**（默认 0.33s，可 0.25s）  
-2. **阶段一**：事实观察 → JSON  
-3. **阶段二**：改写 6 段生成 Prompt  
-4. **阶段三**：对照事实校验  
+1. **高密度抽帧**（默认 0.33s，可 0.25s）
+2. **清晰度检测 + 邻帧救援**
+3. **节奏分析**（BPM / 拍点）
+4. **阶段一**：事实观察 → JSON（含身材、运镜、表情）
+5. **阶段二**：改写 6 段生成 Prompt
+6. **阶段三**：对照事实校验
 
 不做关节坐标级动作重建；动作以可生成的时间轴文字为准。
 
@@ -165,9 +172,9 @@ output/<视频名>_<时间戳>/
 
 ## 依赖
 
-- Python 3.10+  
-- `opencv` + `Pillow`（抽帧，两种模式都要）  
-- `httpx`（仅 API 模式）  
+- Python 3.10+
+- `opencv` + `Pillow`（抽帧，两种模式都要）
+- `httpx`（仅 API 模式）
 
 ```bash
 bash scripts/setup.sh
@@ -181,5 +188,9 @@ bash scripts/setup.sh
 |------|------|
 | `scripts/setup.sh` | 安装依赖 |
 | `scripts/extract_frames.sh` | 只抽帧 + Agent 工作包 |
+| `scripts/check_frame_quality.sh` | 关键帧清晰度检测与邻帧救援 |
+| `scripts/analyze_rhythm.sh` | 音轨节奏 / BPM 分析 |
 | `scripts/analyze.sh` | 通用入口（`--mode agent\|api`） |
 | `scripts/analyze_api.sh` | API 全自动 |
+| `skills/dance-video-to-prompt/scripts/run_extract.sh` | Skill 入口：抽帧 + 清晰度 + 节奏 |
+| `skills/dance-video-to-prompt/scripts/install.sh` | 同步 Skill 到本机 Agent 目录 |
