@@ -1,0 +1,46 @@
+{
+  "duration_sec": 0,
+  "aspect_ratio": "9:16",
+  "subject": {
+    "appearance": "",
+    "hair": "",
+    "outfit": "",
+    "expression_gaze": ""
+  },
+  "scene": {
+    "location": "",
+    "background": "",
+    "props": ""
+  },
+  "visual": {
+    "quality_feel": "",
+    "color_tone": "",
+    "contrast": "",
+    "lighting": ""
+  },
+  "camera": {
+    "framing": "",
+    "movement": "",
+    "angle": "",
+    "depth_of_field": ""
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.0,
+      "action": "肢体：左右肢/幅度/手型/视线",
+      "expression": "眉/眼/口+情绪；相对上段变化（由A转为B或保持）",
+      "body_focus": "",
+      "intensity": "中"
+    }
+  ],
+  "dialogue_or_text": {
+    "speech": "无",
+    "on_screen_text": "无"
+  },
+  "audio_guess": {
+    "bgm_style": "",
+    "bpm_feel": "",
+    "beat_sync": ""
+  }
+}

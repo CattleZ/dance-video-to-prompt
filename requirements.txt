@@ -1,0 +1,4 @@
+httpx>=0.27.0
+Pillow>=10.0.0
+# 抽帧需要；若 venv 中没有 cv2：
+opencv-python-headless>=4.8.0

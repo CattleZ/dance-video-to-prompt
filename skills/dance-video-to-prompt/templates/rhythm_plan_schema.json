@@ -1,0 +1,29 @@
+{
+  "bpm": 0,
+  "beat_period_sec": 0,
+  "time_signature": "4/4",
+  "bgm_style_for_prompt": "",
+  "energy_arc": "",
+  "default_mapping": "一拍一关键动作或一拍一步",
+  "strong_beat_action_hint": "踩实/微顿/甩裙/甩肢",
+  "accent_times": [],
+  "accent_suggestions": [
+    {
+      "t": 0.0,
+      "hint": ""
+    }
+  ],
+  "section_plan": [
+    {
+      "start": 0.0,
+      "end": 1.0,
+      "role": "铺垫|稳态|高潮|收束",
+      "kadian": "轻|中|强"
+    }
+  ],
+  "prompt_bgm_bullets": [
+    "音乐：",
+    "音效：无",
+    "混音与卡点："
+  ]
+}
