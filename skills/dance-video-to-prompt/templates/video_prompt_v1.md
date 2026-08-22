@@ -6,6 +6,10 @@
 
 {scene_narrative}
 
+## 拍摄场景
+
+{shooting_scene}
+
 ## 摄影技术
 
 {cinematography}

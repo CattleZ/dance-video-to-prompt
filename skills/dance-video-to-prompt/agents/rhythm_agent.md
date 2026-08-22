@@ -7,7 +7,7 @@
 
 1. 阅读 `OUT_DIR/rhythm_analysis.json` 与 `rhythm_brief.md`  
 2. 解释：BPM、拍号、能量曲线、风格、大卡点时刻  
-3. 输出 `OUT_DIR/rhythm_plan.json`（融合用，不写最终 6 段 prompt）
+3. 输出 `OUT_DIR/rhythm_plan.json`（融合用，不写最终 7 段 prompt）
 
 ## 禁止
 

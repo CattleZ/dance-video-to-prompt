@@ -129,6 +129,8 @@ def write_agent_kit(
 - segments 按 0.5~1.5 秒切分，覆盖全片
 - 每段 action：左右肢、角度/幅度、手型、视线
 - 每段 expression：眉/眼/口/情绪 + 相对上段变化；禁止「表情自然」
+- 穿搭：`subject.outfit` 逐件填写颜色与款式（剪裁/长短/腰线）
+- 拍摄场景：`scene` 填写场所、站位、背景、地面、陈设、时空
 - 对话/字幕无则写「无」
 - audio_guess 可粗写；**最终 BPM 以节奏文件为准，禁止画面代理编造精确拍点表**
 
@@ -141,14 +143,15 @@ def write_agent_kit(
 
 可用 spawn_subagent 独立完成阶段 B；无 spawn 则主会话切换角色完成。
 
-### 阶段 C：融合 — 6 段生成提示词（主代理）
+### 阶段 C：融合 — 7 段生成提示词（主代理）
 
 **同时基于** `analysis.json` + `rhythm_plan.json`（及 rhythm_analysis 拍点表）写出 Prompt。
 
-必须严格 6 个二级标题（不要增删）：
+必须严格 7 个二级标题（不要增删）：
 
 ## 视觉风格
 ## 场景叙述
+## 拍摄场景
 ## 摄影技术
 ## 动作清单
 ## 对话/文字
@@ -156,10 +159,12 @@ def write_agent_kit(
 
 写作规范：
 - 准确：不编造 analysis 中没有的关键动作/服装/场景/表情
+- 场景叙述：人物身材 + 穿搭（逐件颜色与款式）；不写环境细节
+- 拍摄场景：场所、空间关系、背景、地面、陈设、时空与环境光、氛围、场景变化
 - 动作五要素：左右肢、角度/幅度、手型、视线、面部表情；禁止空泛词
 - **若节奏 ok**：动作时间对齐拍点/accent；强拍写踩实/微顿/甩肢等；背景声音写清 BPM 与卡点秒数
 - **若节奏失败**：不强行假 BPM，动作跟画面时间轴
-- 摄影技术：摄影机 / 镜头 / 灯光 / 情绪
+- 摄影技术：拍摄方法 / 运镜 / 关注重点 / 摄影机 / 镜头 / 灯光 / 情绪
 - 简体中文
 
 模板参考：
@@ -173,6 +178,8 @@ def write_agent_kit(
 ### 阶段 D：校验
 
 - 画面：无编造、左右正确、五要素齐全、表情有变化或写保持
+- 穿搭：场景叙述逐件含颜色与款式；`subject.outfit.items` 已填
+- 拍摄场景：独立成段；场所 + 背景 ≥2 元素 + 人物站位
 - 清晰度：未对 blurry 帧编造精细手型/五官
 - 节奏：ok 时 BPM 与大卡点是否进入动作清单与背景声音
 - 覆盖写回 `prompt.md`
@@ -180,9 +187,10 @@ def write_agent_kit(
 ## 完成标准
 
 - [ ] 已读 frame_quality.json，优先分析 sharp_for_analysis
-- [ ] analysis.json 合法（含 segments[].expression）
+- [ ] analysis.json 合法（含 segments[].expression、subject.outfit、scene 场所字段）
 - [ ] rhythm_plan.json 已写（节奏失败时也要有保守 plan）
-- [ ] prompt.md 含完整 6 段标题
+- [ ] prompt.md 含完整 7 段标题（含拍摄场景）
+- [ ] 穿搭逐件含颜色与款式；拍摄场景未与场景叙述重复堆砌
 - [ ] 动作清单五要素齐全；有节奏则体现卡点
 - [ ] 向用户打印 prompt.md，并给出 analysis / frame_quality / rhythm_* / frames 路径
 """

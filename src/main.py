@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CLI：本地短视频 → 6 段结构化视频生成提示词。
+"""CLI：本地短视频 → 7 段结构化视频生成提示词。
 
 支持两种模式：
 - agent：只抽帧并写出 Agent 工作说明（不调 API，给 Skill/CLI 模型看图用）
@@ -55,7 +55,7 @@ from agent_kit import write_agent_kit  # noqa: E402
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="将 ≤10s 本地跳舞视频反推为 6 段视频生成提示词"
+        description="将 ≤10s 本地跳舞视频反推为 7 段视频生成提示词"
     )
     p.add_argument("video", type=Path, help="本地视频路径")
     p.add_argument(

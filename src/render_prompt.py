@@ -1,4 +1,4 @@
-"""校验并规范化 6 段模板输出。"""
+"""校验并规范化 7 段模板输出。"""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import re
 REQUIRED_SECTIONS = [
     "视觉风格",
     "场景叙述",
+    "拍摄场景",
     "摄影技术",
     "动作清单",
     "对话/文字",
@@ -15,7 +16,7 @@ REQUIRED_SECTIONS = [
 
 
 def normalize_prompt_markdown(text: str) -> str:
-    """尽量规整模型输出为标准 6 段 Markdown。"""
+    """尽量规整模型输出为标准 7 段 Markdown。"""
     text = text.strip()
     # 去掉可能的代码围栏
     if text.startswith("```"):
